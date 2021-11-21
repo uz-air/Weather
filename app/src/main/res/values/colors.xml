@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="heading_colour">#FF2A2A2A</color>
     <color name="location_colour">#FF556799</color>
+    <color name="error_bg">#E85959</color>
+    <color name="button_colour">#4A4A4A</color>
 </resources>
