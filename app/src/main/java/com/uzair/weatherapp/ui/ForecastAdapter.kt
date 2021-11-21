@@ -3,6 +3,7 @@ package com.uzair.weatherapp.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.uzair.weatherapp.R
 import com.uzair.weatherapp.data.Forecast
 import com.uzair.weatherapp.databinding.ForecastRowItemBinding
 
@@ -16,7 +17,8 @@ class ForecastAdapter : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ForecastRowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(dataset: Forecast.Predict) {
-            binding.forecastValue.text = dataset.main?.temp.toString()
+            binding.forecastValue.text =
+                binding.root.resources.getString(R.string.celsius, dataset.main?.temp.toString())
             binding.forecastDay.text = dataset.dt_txt
         }
     }

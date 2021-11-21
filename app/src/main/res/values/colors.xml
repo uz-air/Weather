@@ -11,4 +11,5 @@
     <color name="location_colour">#FF556799</color>
     <color name="error_bg">#E85959</color>
     <color name="button_colour">#4A4A4A</color>
+    <color name="screen_bg">#F5F6F7</color>
 </resources>

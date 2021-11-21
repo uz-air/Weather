@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="16dp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/forecast_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        tools:text="Monday"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,6 +20,7 @@
         android:id="@+id/forecast_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        tools:text="20 C"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

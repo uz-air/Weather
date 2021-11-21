@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(private val retrofit: WeatherService) {
 
-    suspend fun getTemp(): Resource<Pair<Temperature, Forecast>> { //5
+    suspend fun getValues(): Resource<Pair<Temperature, Forecast>> { //5
         return withContext(Dispatchers.IO) {
             try {
                 val second = retrofit.getForecast()

@@ -14,6 +14,7 @@
         <action
             android:id="@+id/weatherFragment_to_errorFragment"
             app:destination="@id/errorFragment"
+            app:popUpTo="@id/weatherFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -24,6 +25,7 @@
         <action
             android:id="@+id/errorFragment_to_weatherFragment"
             app:destination="@id/weatherFragment"
+            app:popUpTo="@id/errorFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

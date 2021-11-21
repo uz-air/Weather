@@ -13,15 +13,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(private val repo: WeatherRepository) :
-    ViewModel() {
+class WeatherViewModel @Inject constructor(private val repo: WeatherRepository) : ViewModel() {
 
     private var temperature: String? = null
-    fun getTemp(): MutableLiveData<Resource<Pair<Temperature, Forecast>>> {
+    fun getValues(): MutableLiveData<Resource<Pair<Temperature, Forecast>>> {
         val result = MutableLiveData<Resource<Pair<Temperature, Forecast>>>()
         result.value = Resource.loading()
         viewModelScope.launch(Dispatchers.IO) {
-            result.postValue(repo.getTemp())
+            result.postValue(repo.getValues())
         }
         return result
     }
