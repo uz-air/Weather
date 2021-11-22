@@ -54,7 +54,7 @@ object AppModule {
 
     @AssistedFactory
     interface ProgressDialogFactory {
-        fun create(context: Context): ProgressDialog
+        fun create(context: Context?): ProgressDialog
     }
 
 

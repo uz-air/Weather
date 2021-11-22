@@ -9,6 +9,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.uzair.weatherapp.R
 import com.uzair.weatherapp.data.Forecast
 import com.uzair.weatherapp.data.Resource
@@ -32,7 +34,7 @@ class WeatherFragment : Fragment() {
     @Inject
     lateinit var progressDialogFactory: AppModule.ProgressDialogFactory
 
-    private val progressDialog: ProgressDialog by lazy { progressDialogFactory.create(this.context!!) }
+    private val progressDialog: ProgressDialog by lazy { progressDialogFactory.create(this.context) }
     private val forecastAdapter by lazy { ForecastAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +48,12 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = forecastAdapter
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this.context,
+                LinearLayoutManager.VERTICAL
+            )
+        )
         viewModel.getValues().observe(this) { resource ->
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
@@ -70,7 +78,6 @@ class WeatherFragment : Fragment() {
                 }
                 Resource.Status.LOADING -> {
                     progressDialog.showLoading()
-                    showLoadingScreen()
                 }
             }
         }
@@ -98,10 +105,6 @@ class WeatherFragment : Fragment() {
             fillAfter = true
         }
         binding.recyclerView.startAnimation(animate)
-    }
-
-    private fun showLoadingScreen() {
-
     }
 
     private fun showErrorScreen() {

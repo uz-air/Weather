@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/ic_refresh.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/progress_indeterminate.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/dialog_progress.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/forecast_row_item.xml" value="0.22" />
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/fragment_error.xml" value="0.12129629629629629" />
+        <entry key="..\:/Users/adeeb/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/fragment_weather.xml" value="0.22" />
       </map>
     </option>
   </component>
