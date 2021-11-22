@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.uzair.weatherapp.R
+import com.uzair.weatherapp.data.Forecast
 import com.uzair.weatherapp.data.Resource
 import com.uzair.weatherapp.databinding.FragmentWeatherBinding
+import com.uzair.weatherapp.di.AppModule
 import com.uzair.weatherapp.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import android.view.animation.TranslateAnimation
-import androidx.core.view.isVisible
-import com.uzair.weatherapp.di.AppModule
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 
@@ -54,7 +58,7 @@ class WeatherFragment : Fragment() {
                             binding.tempToday.text =
                                 resources.getString(R.string.degrees, temp.toString())
                             binding.placeName.text = placeName
-                            forecastAdapter.populateData(forecast)
+                            forecastAdapter.populateData(avgTemp(forecast))
                             slideIn()
                         } else
                             showErrorScreen()
@@ -70,6 +74,16 @@ class WeatherFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun avgTemp(forecast: List<Forecast.Predict>): MutableList<Forecast.Predict> {
+        val list: MutableList<Forecast.Predict> = mutableListOf()
+        for (it in forecast.indices step 8) {
+            list.add(forecast.subList(it, it + 7).reduceRight { predict, acc ->
+                acc.apply { main?.temp = main?.temp?.plus(predict.main?.temp ?: 0.0) }
+            }.apply { main?.temp = main?.temp?.div(8) })
+        }
+        return list
     }
 
     private fun slideIn() {
